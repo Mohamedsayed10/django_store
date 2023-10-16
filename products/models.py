@@ -10,9 +10,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class products(models.Model):
-    name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='Home/images' ,null=True,blank=True)
+class Product(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='products/images' ,null=True,blank=True)
     price = models.IntegerField()
     description = models.TextField()
     category = models.ForeignKey(Category, null=True,blank=True,on_delete=models.CASCADE)
@@ -20,4 +20,4 @@ class products(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.title

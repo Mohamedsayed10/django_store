@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block search %}
+    <div class="navbar-right ml-auto d-flex justify-content-center">
+        <form action="{% url 'search' %}" method="GET">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" name="query" class="form-control form-control-lg" placeholder="Search...">
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+{% block content %}
+<div class="card-container">
+    
+    {% for product in products %}
+    <div class="card">
+        <img src="{{product.image.url}}" alt="{{ product.name }} Image">
+        <h2>{{ product.name }}</h2>
+        <h5>Category: {{ product.category }}</h5>
+        <h6>product Owner: {{product.owner}}</h6>
+        <a href="{% url 'detail' id=product.id %}" class="btn">View Details</a>
+        <a href="{% url 'edit_product' id=product.id %}" class="btn bg-warning">Edit</a>
+        <a href="{% url 'delete' id=product.id %}" class="btn bg-danger">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

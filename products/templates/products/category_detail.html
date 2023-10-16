@@ -1,0 +1,21 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h2> Category: {{ category }}</h2>
+        {% for product in products %}
+        <div class="card">
+            <img src="{{ product.image.url }}" alt="Card Image">
+        </div>
+        <div class="details">
+            <h2>{{ product.name }}</h2>
+            <p>Description: {{ product.description }}</p>
+            <p>Price: {{ product.price }}$</p>
+            <div class="buttons"> 
+                <a href="{% url 'home' %}" class="btn bg-primary text-white">Back</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
