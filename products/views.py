@@ -30,10 +30,6 @@ def detail(request, id):
     return HttpResponse("Sorry target product profile not found ")
     
 
-
-
-    
-
 def search(request):
     query = request.GET.get('query')
     products = Product.objects.filter(title__icontains=query)
