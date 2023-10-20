@@ -109,7 +109,7 @@ def delete(request, id):
         return HttpResponse("You are not authorized to delete this product.")
     
     if product:
-        product_instance = product[0]
+        product_instance = product
         image_path = product_instance.image.path
         if os.path.exists(image_path):
             os.remove(image_path)

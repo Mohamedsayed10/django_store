@@ -9,10 +9,12 @@
                     {% for product in products %}
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="{{product.image.url}}" alt="{{ product.name }} Image">
-                                <h2>{{ product.name }}</h2>
-                                <p>This is a sample card. You can customize it as per your needs.</p>
-                                <a href="{% url 'detail' id=product.id %}" class="btn">View Details</a>
+                                <img src="{{product.image.url}}" alt="{{ product.title }} Image">
+                                <h2>{{ product.title }}</h2>
+                                <h4>{{ product.description }}</h4>
+                                <h5>{{ product.category }}</h5>
+
+                                <a href="{% url 'detail' id=product.id %}" class="btn bg-primary">View Details</a>
                                 <a href="{% url 'delete' id=product.id %}" class="btn">Delete</a>
                             </div>
                         </div>

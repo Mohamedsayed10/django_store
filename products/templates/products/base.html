@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>Car Store</title>
     <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
     
@@ -13,21 +13,84 @@
 
 <body>
     <header>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'contact' %}">Contact Us</a>
-            <a href="{% url 'about' %}">About Us</a>
-            <a href="{% url 'add_product' %}" class="btn bg-warning mr-3">Add product</a>
-            <a href="{% url 'category_list' %}" class="btn bg-warning mr-3">Show Category</a>
-            {% if user.id %}
-                <a href="{% url 'profile' %}" >{{user}}</a>
-                <a href="{% url 'logout' %}" >Logout</a>
-            {% else %}
-                <a href="{% url 'login' %}" >Login</a>
-                <a href="{% url 'register' %}" >Register</a>
-            {%endif%}    
+         {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
             
-        </nav>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-warning mr-3" href="{% url 'add_product' %}">Add Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-warning mr-3" href="{% url 'category_list' %}">Show Category</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link float-left bg-primary" href="{% url 'profile' %}">{{ user }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link float-left bg-primary" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}   
+                </ul>
+            </div>
+        </nav>  {% endcomment %}
+
+
+       <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container">
+                <a class="navbar-brand" href="/products">Home</a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products/contact">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products/about">About Us</a>
+                        </li>
+                    </ul>
+             
+                    <ul class="navbar-nav ml-auto ">
+                        <a class=" nav-link font-dark" href="/products/add_product">Add Product
+                        </a>
+                        <a href="{% url 'category_list' %}" class="btn bg-info mr-3">Show Category</a>
+
+                    </ul>
+
+      
+                </div>
+                <div class="flex-d">
+                    <ul class="navbar-nav ml-auto ">
+
+                        {% if user.id %}
+                        <a class=" nav-link font-dark ml-auto" href="{% url 'profile' %}" >{{user}}</a>
+                        <a class=" nav-link font-dark ml-auto" href="{% url 'logout' %}" >Sign Out</a>
+                        {% else %}
+                        <a class=" nav-link font-dark ml-auto" href="{% url 'login' %}" >login</a>
+                        <a class=" nav-link font-dark ml-auto" href="{% url 'register' %}" >register</a>
+                        {%endif%}   
+                    </ul>
+                </div>    
+            </div>
+        </nav> 
     </header>
     <br>
     {% block search %}

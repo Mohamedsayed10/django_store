@@ -10,7 +10,7 @@
         <h5>Category: {{ product.category }}</h5>
         <p>{{cat.description}}</p>
         
-        <a href="{% url 'category_detail' category=cat.name %}" class="btn">Show cars Category</a>
+        <a href="{% url 'category_detail' category=cat.name %}" class="btn bg-primary">Show cars Category</a>
         {% comment %} 
         <a href="{% url 'edit_product' id=product.id %}" class="btn bg-warning">Edit</a>
         <a href="{% url 'delete' id=product.id %}" class="btn bg-danger">Delete</a> {% endcomment %}
